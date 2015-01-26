@@ -56,7 +56,7 @@
 					.attr( 'data-height', this.height )
 					.css( {
 						'display' : 'block',
-						'margin'  : video_margin
+						'margin'  : 0
 					} );
 			}
 

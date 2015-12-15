@@ -15,6 +15,9 @@ class WPCOM_JSON_API_Get_Option_Endpoint extends Jetpack_JSON_API_Endpoint {
 	}
 
 	function validate_input( $object ) {
+		if ( ! Jetpack::is_module_active( 'manage' ) ) {
+			return new WP_Error( 'unauthorized_full_access', __( 'Full management mode is off for this site.', 'jetpack' ), 403 );
+		}
 		$query_args = $this->query_args();
 		$this->option_name = isset( $query_args['option_name'] ) ? $query_args['option_name'] : false;
 		if ( ! $this->option_name ) {
